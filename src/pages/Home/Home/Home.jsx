@@ -1,7 +1,11 @@
+import Banner from "./Banner";
+import Swper from "./Swper";
+
 function Home() {
     return (
         <div>
-            <h1>This is a home page</h1>
+            <Banner />
+            <Swper />
         </div>
     )
 }

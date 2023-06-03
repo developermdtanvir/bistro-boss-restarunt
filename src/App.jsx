@@ -6,7 +6,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      <div className="container mx-auto">
+        <RouterProvider router={router}></RouterProvider>
+      </div>
     </>
   )
 }
