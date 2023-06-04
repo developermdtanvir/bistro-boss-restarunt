@@ -1,3 +1,4 @@
+import logo from '../../../assets/school.png';
 function Navbar() {
     const nav = <>
         <li><a>Home</a></li>
@@ -9,22 +10,6 @@ function Navbar() {
 
     </>
     return (
-        // <div className="navbar fixed z-10 text-white container  bg-opacity-10 bg-black">
-        //     <div className="flex-1">
-        //         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
-        //     </div>
-        //     <div className="flex-none">
-        //         <ul className="menu menu-horizontal px-1">
-        //             <li><a>Link</a></li>
-        //             {nav}
-
-        //             <li>
-
-        //             </li>
-        //         </ul>
-        //     </div>
-        // </div>
-
         <div className="navbar bg-black fixed z-10 text-white container bg-opacity-10">
             <div className="navbar-start">
                 <div className="dropdown">
@@ -35,7 +20,7 @@ function Navbar() {
                         {nav}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <img className=' h-10' src={logo} alt="" />
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
