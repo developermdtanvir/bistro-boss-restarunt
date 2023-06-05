@@ -16,6 +16,7 @@
     "react-awesome-button": "^7.0.5",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-parallax": "^3.5.1",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.11.2",
     "swiper": "^9.3.2"
