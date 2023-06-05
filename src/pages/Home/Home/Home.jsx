@@ -1,8 +1,10 @@
 import Banner from "./Banner";
 import Boss from "./Boss";
+import Featured from "./Featured";
 import Manue from "./Manue";
 import Recommandas from "./Recommandas";
 import Swper from "./Swper";
+import Testimonials from "./Testimonials";
 
 function Home() {
     return (
@@ -12,6 +14,8 @@ function Home() {
             <Boss />
             <Manue />
             <Recommandas />
+            <Featured />
+            <Testimonials />
         </div>
     )
 }

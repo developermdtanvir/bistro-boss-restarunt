@@ -28,5 +28,9 @@
     object-fit: cover;
   }
 
-
+.feacherd-item{
+  background-image: url('../../../src/assets/home/featured.jpg');
+  background-size: cover;
+  opacity: .75;
+}
   

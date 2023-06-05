@@ -10,7 +10,7 @@ function Navbar() {
 
     </>
     return (
-        <div className="navbar bg-black fixed z-10 text-white container bg-opacity-10">
+        <div className="navbar bg-black fixed z-10 text-white max-w-screen-xl bg-opacity-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,9 +27,7 @@ function Navbar() {
                     {nav}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <a className="btn">Button</a>
-            </div>
+
         </div>
     )
 }
