@@ -1,3 +1,4 @@
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
 import Banner from "./Banner";
 import Boss from "./Boss";
 import Featured from "./Featured";
@@ -7,6 +8,7 @@ import Swper from "./Swper";
 import Testimonials from "./Testimonials";
 
 function Home() {
+    useDocumentTitle('Home')
     return (
         <div>
             <Banner />

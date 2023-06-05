@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/school.png';
 function Navbar() {
     const nav = <>
-        <li><a>Home</a></li>
-        <li><a>About</a></li>
-        <li><a>Contact</a></li>
-        <li><a>Link 1</a></li>
-        <li><a>Link 1</a></li>
+        <li className='uppercase'><Link to='/'>Home</Link></li>
+        <li className='uppercase'><Link>Contact us</Link></li>
+        <li className='uppercase'><Link>Dashboard</Link></li>
+        <li className='uppercase'><Link to='/menu'>Our Menu</Link></li>
+        <li className='uppercase'><Link>Link 1</Link></li>
 
 
     </>
