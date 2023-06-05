@@ -4,7 +4,7 @@ function Featured() {
     return (
         <div className='feacherd-item bg-fixed'>
             <SectionTitle heading={'FROM OUR MENU'} subHeading={'Check it out'} ></SectionTitle>
-            <div className='lg:flex md:flex justify-center items-center text-center py-32 px-20'>
+            <div className='lg:flex md:flex justify-center items-center text-center lg:py-32 lg:px-20 md:py-20 md:px-10'>
                 <div >
                     <img src={featured} alt="" />
                 </div>
