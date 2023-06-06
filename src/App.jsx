@@ -1,14 +1,17 @@
-import { RouterProvider } from 'react-router-dom'
-import './App.css'
-import { router } from './route/Route'
+import { RouterProvider } from 'react-router-dom';
+import './App.css';
+import AuthProvider from './providers/AuthProvider';
+import { router } from './route/Route';
 
 function App() {
 
   return (
     <>
-      <div className="container mx-auto">
-        <RouterProvider router={router}></RouterProvider>
-      </div>
+      <AuthProvider>
+        <div className="container mx-auto">
+          <RouterProvider router={router}></RouterProvider>
+        </div>
+      </AuthProvider>
     </>
   )
 }
