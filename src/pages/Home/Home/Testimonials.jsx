@@ -19,7 +19,7 @@ function Testimonials() {
     console.log(review);
 
     useEffect(() => {
-        axios.get('reviews.json')
+        axios.get('http://localhost:3000/reviews')
             .then(data => setReview(data.data))
     }, [])
 

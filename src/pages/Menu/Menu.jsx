@@ -23,8 +23,8 @@ function Menu() {
             <Cover img={ourmenu} title={'OUR MENU'} subtitle={'Wouuld you like to try a dish'} />
             <SectionTitle heading="TODAY'S OFFER" subHeading="Don't miss" />
             <MenuCategory item={offered} />
-            <MenuCategory item={dessert} coverImage={treeCover} coverTitle={"DESSERTS"} />
-            <MenuCategory item={pizza} coverImage={treeCover} coverTitle="PIZZA" />
+            <MenuCategory item={dessert} coverImage={treeCover} coverTitle={"desserts"} />
+            <MenuCategory item={pizza} coverImage={treeCover} coverTitle="pizza" />
             <MenuCategory item={salad} coverImage={treeCover} coverTitle="salads" />
             <MenuCategory item={soup} coverImage={treeCover} coverTitle="soup" />
         </div>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Cover from '../../components/Cover/Cover';
 import MenuItem from '../../components/MenuItem/MenuItem';
 function MenuCategory({ item, coverImage, coverTitle }) {
@@ -10,6 +11,7 @@ function MenuCategory({ item, coverImage, coverTitle }) {
                     item.map(item => <MenuItem key={item._id} item={item} ></MenuItem>)
                 }
             </div>
+            <Link to={`/shop/${coverTitle}`} className='flex justify-center'><button className="btn text-orange-500 border-0 border-b-4 bg-slate-300 border-orange-500">order</button></Link>
         </div>
     )
 }

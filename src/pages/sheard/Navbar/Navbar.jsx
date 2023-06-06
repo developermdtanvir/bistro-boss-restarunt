@@ -6,7 +6,7 @@ function Navbar() {
         <li className='uppercase'><Link>Contact us</Link></li>
         <li className='uppercase'><Link>Dashboard</Link></li>
         <li className='uppercase'><Link to='/menu'>Our Menu</Link></li>
-        <li className='uppercase'><Link to='/shop'>our shop</Link></li>
+        <li className='uppercase'><Link to='/shop/salads'>our shop</Link></li>
     </>
     return (
         <div className="navbar bg-black fixed z-10 text-white max-w-screen-xl bg-opacity-10">
