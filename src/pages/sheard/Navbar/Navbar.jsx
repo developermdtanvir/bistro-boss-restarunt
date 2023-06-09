@@ -1,14 +1,39 @@
-import { FaUserCircle } from 'react-icons/fa';
+import { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { FaCartPlus, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/school.png';
+import useCart from '../../../hooks/useCart';
+import { AuthContext } from '../../../providers/AuthProvider';
 function Navbar() {
+    const { user, logOutUser } = useContext(AuthContext);
+
+    console.log(user);
+
+    const handleLogOut = () => {
+        logOutUser()
+            .then(res => {
+                localStorage.removeItem('token')
+                toast.error('logout successfully')
+            })
+    }
+
+
+    const [cart] = useCart();
+
+
     const nav = <>
         <li className='uppercase'><Link to='/'>Home</Link></li>
         <li className='uppercase'><Link>Contact us</Link></li>
-        <li className='uppercase'><Link>Dashboard</Link></li>
+        <li className='uppercase'><Link to='/dashboard'>Dashboard</Link></li>
         <li className='uppercase'><Link to='/menu'>Our Menu</Link></li>
         <li className='uppercase'><Link to='/shop/salads'>our shop</Link></li>
-        <span><FaUserCircle className=' text-4xl' /></span>
+        <li><Link to='/'><button className="btn btn-xs">
+            <FaCartPlus />
+            <div className="badge badge-secondary">{cart?.length || 0}</div>
+        </button></Link></li>
+        {user && <><li className='uppercase'><Link onClick={handleLogOut}>sign out</Link></li>
+            <span><FaUserCircle className=' text-4xl' /></span></>}
     </>
     return (
         <div className="navbar bg-black fixed z-10 text-white max-w-screen-xl bg-opacity-10">

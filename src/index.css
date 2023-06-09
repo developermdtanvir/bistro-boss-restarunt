@@ -34,3 +34,11 @@
   opacity: .75;
 }
   
+
+#sidebar a.active {
+  color: white;
+}
+
+.drawer-slide a {
+  background-color: transparent;
+}

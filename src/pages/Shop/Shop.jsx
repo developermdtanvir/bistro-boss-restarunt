@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
@@ -7,9 +7,16 @@ import useMenu from '../../../src/hooks/useMenu.jsx';
 import shopBanner from '../../assets/shop/banner2.jpg';
 import Cover from "../../components/Cover/Cover";
 import useDocumentTitle from '../../hooks/useDocumentTitle.jsx';
+import { AuthContext } from '../../providers/AuthProvider.jsx';
 import Card from './Card.jsx';
 
 function Shop() {
+    const { cart, setCart, user } = useContext(AuthContext);
+
+
+
+
+
     useDocumentTitle('Shop')
     const [menu] = useMenu();
     const { category } = useParams();
