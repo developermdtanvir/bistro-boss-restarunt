@@ -1,3 +1,4 @@
+import '@smastrom/react-rating/style.css';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterProvider } from 'react-router-dom';

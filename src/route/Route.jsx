@@ -6,9 +6,12 @@ import SignUpLayout from "../layout/SignUpLayout";
 import AddItem from "../pages/Dashboard/AddItem";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart";
+import Review from "../pages/Dashboard/Review";
+import UpdateItem from "../pages/Dashboard/UpdateItem";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Menu from "../pages/Menu/Menu";
+import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Shop from "../pages/Shop/Shop";
 import Signup from "../pages/Signup/Signup";
 
@@ -31,6 +34,10 @@ export const router = createBrowserRouter([
                 element: <Shop />,
                 path: '/shop/:category'
             },
+            {
+                element: <PageNotFound />,
+                path: '*'
+            }
         ]
     },
     {
@@ -72,6 +79,14 @@ export const router = createBrowserRouter([
             {
                 element: <AddItem />,
                 path: '/dashboard/additem'
+            },
+            {
+                element: <UpdateItem />,
+                path: '/dashboard/updateitem'
+            },
+            {
+                element: <Review />,
+                path: '/dashboard/review'
             },
         ]
     },
