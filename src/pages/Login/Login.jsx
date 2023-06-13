@@ -24,6 +24,44 @@ function Login() {
 
 
     const { register, handleSubmit, watch, formState: { errors }, } = useForm();
+
+    const handleGoogleSinIn = () => {
+        loginWithGoogle()
+            .then(res => {
+                const { email, displayName } = res.user
+                const saveUser = { email: email, name: displayName }
+
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('token', data.token);
+                        navigate(from, { replace: true })
+                        fetch('http://localhost:3000/users', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        }).then(res => res.json())
+                            .then(data => {
+                                if (data.acknowledged) {
+                                    toast.success('successfully login')
+                                }
+                            })
+                    });
+
+
+
+            })
+    }
+
+
     const handleLogin = data => {
         const { email, password } = data;
         signinUserEmailPass(email, password)
@@ -39,7 +77,8 @@ function Login() {
                     body: JSON.stringify({ email })
                 }).then(res => res.json())
                     .then(data => {
-                        localStorage.setItem('token', data.token)
+                        localStorage.setItem('token', data.token);
+                        console.log(data);
                     });
 
                 navigate(from, { replace: true });
@@ -88,7 +127,7 @@ function Login() {
                             <div className="flex justify-around items-center">
                                 <FaFacebookF onClick={loginWithFacebook} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                                 <FaGithub onClick={loginWithGithub} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
-                                <AiOutlineGoogle onClick={loginWithGoogle} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
+                                <AiOutlineGoogle onClick={handleGoogleSinIn} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                             </div>
                             <br />
                             <Link to='/signup'><span className='text-orange-400'>New here? Create a New Account</span></Link>

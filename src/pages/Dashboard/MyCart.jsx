@@ -9,6 +9,10 @@ function MyCart() {
     //     sum = sum + item.price
     // })
 
+    // consolse.log(cart);
+
+    console.log(cart);
+
     let sum = cart.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.price
     }, 0);

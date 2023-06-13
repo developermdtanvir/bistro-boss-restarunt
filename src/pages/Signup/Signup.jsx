@@ -4,24 +4,92 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { FaFacebookF, FaGithub } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import loginImage from '../../assets/others/authentication2.png';
 import { AuthContext } from '../../providers/AuthProvider';
 import './Signup.css';
 
+
 function Signup() {
     const { user, loginWithGoogle, loginWithGithub, loginWithFacebook, createUserEamilPass, updateUser } = useContext(AuthContext);
 
+    const navigate = useNavigate()
 
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const handleGoogleSinIn = () => {
+        loginWithGoogle()
+            .then(res => {
+                const { email, displayName } = res.user
+                const saveUser = { email: email, name: displayName }
+
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                }).then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'top-end',
+                                showConfirmButton: false,
+                                timer: 3000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Signed up successfully'
+                            })
+                        }
+                    })
+
+            })
+    }
+
     const handleCreateUser = data => {
         const { email, password, name } = data;
+        const saveUser = { name, email }
         createUserEamilPass(email, password)
             .then(res => {
-                updateUser(name)
-                toast('user created successfully', {
-                    icon: '👏'
+                const email = res.user.email
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                }).then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem('token', data.token);
+                        navigate(from, { replace: true });
+                        toast('user created successfully', {
+                            icon: '👏'
+                        })
+                    });
+                updateUser(name).then(res => {
+
+                    fetch('http://localhost:3000/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(saveUser)
+                    }).then(res => res.json())
+                        .then(data => {
+
+                        })
                 })
+
             })
     };
     return (
@@ -69,7 +137,7 @@ function Signup() {
                             <div className="flex justify-around items-center">
                                 <FaFacebookF onClick={loginWithFacebook} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                                 <FaGithub onClick={loginWithGithub} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
-                                <AiOutlineGoogle onClick={loginWithGoogle} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
+                                <AiOutlineGoogle onClick={handleGoogleSinIn} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                             </div>
                         </div>
                     </div>
