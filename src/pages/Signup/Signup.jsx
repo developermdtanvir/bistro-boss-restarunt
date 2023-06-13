@@ -23,35 +23,56 @@ function Signup() {
             .then(res => {
                 const { email, displayName } = res.user
                 const saveUser = { email: email, name: displayName }
-
-                fetch('http://localhost:3000/users', {
+                fetch('http://localhost:3000/jwt', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'content-type': 'application/json'
                     },
-                    body: JSON.stringify(saveUser)
+                    body: JSON.stringify({ email })
                 }).then(res => res.json())
                     .then(data => {
-                        if (data.acknowledged) {
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
+                        localStorage.setItem('token', data.token);
+                        fetch('http://localhost:3000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        }).then(res => res.json())
+                            .then(data => {
+                                navigate('/')
                             })
-
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Signed up successfully'
-                            })
-                        }
                     })
+            })
+    }
 
+    const handleGithubSignIn = () => {
+        loginWithGithub()
+            .then(res => {
+                const { email, displayName } = res.user
+                const saveUser = { email: email, name: displayName }
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                }).then(res => res.json())
+                    .then(data => {
+
+                        localStorage.setItem('token', data.token);
+
+                        fetch('http://localhost:3000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'applicatin/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        }).then(res => res.json())
+                            .then(data => {
+                                navigate('/')
+                            })
+                    })
             })
     }
 
@@ -77,7 +98,6 @@ function Signup() {
                         })
                     });
                 updateUser(name).then(res => {
-
                     fetch('http://localhost:3000/users', {
                         method: 'POST',
                         headers: {
@@ -136,7 +156,7 @@ function Signup() {
                             <br />
                             <div className="flex justify-around items-center">
                                 <FaFacebookF onClick={loginWithFacebook} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
-                                <FaGithub onClick={loginWithGithub} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
+                                <FaGithub onClick={handleGithubSignIn} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                                 <AiOutlineGoogle onClick={handleGoogleSinIn} className="text-4xl text-gray-500 border-gray-500 cursor-pointer border-2 rounded-full" />
                             </div>
                         </div>
