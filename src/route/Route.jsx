@@ -5,6 +5,7 @@ import Main from "../layout/Main";
 import SignUpLayout from "../layout/SignUpLayout";
 import AddItem from "../pages/Dashboard/AddItem";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import ManageItem from "../pages/Dashboard/ManageItem";
 import MyCart from "../pages/Dashboard/MyCart";
 import Review from "../pages/Dashboard/Review";
 import UpdateItem from "../pages/Dashboard/UpdateItem";
@@ -87,6 +88,10 @@ export const router = createBrowserRouter([
             {
                 element: <Review />,
                 path: '/dashboard/review'
+            },
+            {
+                element: <ManageItem />,
+                path: '/dashboard/manageitem'
             },
         ]
     },

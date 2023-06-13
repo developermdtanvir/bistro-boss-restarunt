@@ -1,19 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 const useMenu = () => {
-    const [menu, setMenu] = useState([]);
-    const [loading, setLoading] = useState(true);
 
-
-    useEffect(() => {
-        axios.get('http://localhost:3000/menu')
-            .then(data => {
-                setMenu(data.data)
-                setLoading(false);
-            })
-    }, [])
-    return [menu, loading];
+    const { refetch, data: menu = [], isLoading } = useQuery({
+        queryKey: ['menu'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:3000/menu')
+            return res.json()
+        }
+    })
+    return [menu, isLoading, refetch];
 }
 
 export default useMenu;
