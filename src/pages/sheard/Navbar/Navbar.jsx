@@ -28,7 +28,7 @@ function Navbar() {
         <li className='uppercase'><Link to='/dashboard'>Dashboard</Link></li>
         <li className='uppercase'><Link to='/menu'>Our Menu</Link></li>
         <li className='uppercase'><Link to='/shop/salads'>our shop</Link></li>
-        <li><Link to='/'><button className="btn btn-xs">
+        <li><Link to='/dashboard/cart'><button className="btn btn-xs">
             <FaCartPlus />
             <div className="badge badge-secondary">{cart?.length || 0}</div>
         </button></Link></li>

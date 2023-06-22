@@ -1,4 +1,5 @@
 import { AiFillDelete, AiOutlineEdit } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import useMenu from '../../hooks/useMenu';
@@ -69,10 +70,6 @@ function ManageItem() {
                                                 <img src={item.image} />
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">Yancy Tear</div>
-                                            <div className="text-sm opacity-50">Brazil</div>
-                                        </div>
                                     </div>
                                 </td>
                                 <td>
@@ -80,7 +77,7 @@ function ManageItem() {
                                 </td>
                                 <td>{item.price}</td>
                                 <th>
-                                    <button className="btn bg-[#D1A054] text-white"><AiOutlineEdit className='text-2xl' /></button>
+                                    <Link to={`${item._id}`}> <button className="btn bg-[#D1A054] text-white"><AiOutlineEdit className='text-2xl' /></button></Link>
                                 </th>
                                 <th>
                                     <button onClick={() => handleDeleteItem(item._id)} className="btn bg-red-700 text-white"><AiFillDelete className='text-2xl' /></button>

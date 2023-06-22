@@ -56,10 +56,11 @@ function MyCart() {
 
 
     return (
-        <div>
-            <div className="uppercase flex justify-evenly">
+        <div className="py-10">
+            <div className="uppercase flex items-center justify-evenly">
                 <h1 className=" text-2xl">Total Cart {cart.length}</h1>
                 <p className=" text-2xl">total price {sum}</p>
+                <button className="btn btn-sm btn-warning">pay</button>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

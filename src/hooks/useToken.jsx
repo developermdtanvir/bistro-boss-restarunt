@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-function useToken(email) {
+const useToken = (email) => {
+    const [token, setToken] = useState(null);
 
-    const [token, setToken] = useState('')
     useEffect(() => {
-        if (email) {
-            console.log(email);
-            fetch('http://localhost:3000/jwt', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({ email })
-            }).then(res => res.json())
-                .then(data => {
-                    console.log(data, 'data token')
+        const storedToken = localStorage.getItem('token');
+        if (storedToken) {
+            setToken(storedToken);
+        } else {
+            // Make a POST request to your backend API to generate a token
+            axios.post('http://localhost:3000/jwt', { email })
+                .then((response) => {
+                    const { token } = response.data;
+                    setToken(token);
+                    localStorage.setItem('token', token);
+                })
+                .catch((error) => {
+                    console.error('Error generating token:', error);
                 });
         }
-    }, [email])
+    }, [email]);
+
     return [token];
-}
+};
 
 export default useToken;

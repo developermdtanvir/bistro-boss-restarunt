@@ -10,6 +10,7 @@ function Dashboard() {
 
     useDocumentTitle('dashboard')
 
+
     return (
         <div>
             <h1>Welcome to dashboard</h1>
