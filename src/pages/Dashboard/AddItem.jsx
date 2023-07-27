@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../hooks/useAxiousSecure";
 
@@ -8,7 +7,6 @@ import useAxiosSecure from "../../hooks/useAxiousSecure";
 function AddItem() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const [axiosSecure] = useAxiosSecure()
 
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_API}`
     const handleAddItem = (data) => {
@@ -26,19 +24,13 @@ function AddItem() {
                 if (data.success) {
                     const image = data.data.display_url
                     const menuItem = { name, recipe: details, image, price, category }
-                    axiosSecure.post('/menu', menuItem)
+                    useAxiosSecure.post('/menu', menuItem)
                         .then(data => {
-                            if (data.data.acknowledged) {
-                                Swal.fire(
-                                    'Item Added',
-                                    'You clicked the button!',
-                                    'success'
-                                )
-                            }
+                            console.log('after adding new item', data);
                         })
 
 
-                    // fetch('http://localhost:3000/menu', {
+                    // fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/menu', {
                     //     method: 'POST',
                     //     headers: {
                     //         'Content-Type': 'application/json'

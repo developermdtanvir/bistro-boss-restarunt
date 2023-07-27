@@ -12,7 +12,7 @@ function AllUsers() {
     }
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:3000/users/admin/${id}`, {
+        fetch(`https://bistro-boss-restaurant-server-ecru.vercel.app/users/admin/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +26,7 @@ function AllUsers() {
     }
 
     const handleDelete = id => {
-        fetch(`http://localhost:3000/users/${id}`, {
+        fetch(`https://bistro-boss-restaurant-server-ecru.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

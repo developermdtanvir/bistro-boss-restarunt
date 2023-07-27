@@ -19,7 +19,7 @@ function Testimonials() {
     console.log(review);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/reviews')
+        axios.get('https://bistro-boss-restaurant-server-ecru.vercel.app/reviews')
             .then(data => setReview(data.data))
     }, [])
 

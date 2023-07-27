@@ -10,7 +10,7 @@ const useToken = (email) => {
             setToken(storedToken);
         } else {
             // Make a POST request to your backend API to generate a token
-            axios.post('http://localhost:3000/jwt', { email })
+            axios.post('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', { email })
                 .then((response) => {
                     const { token } = response.data;
                     setToken(token);

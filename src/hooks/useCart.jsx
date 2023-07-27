@@ -10,7 +10,7 @@ const useCart = () => {
         queryKey: ['cart', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const res = await fetch(`http://localhost:3000/cart?email=${user?.email}`, {
+        //     const res = await fetch(`https://bistro-boss-restaurant-server-ecru.vercel.app/cart?email=${user?.email}`, {
         //         headers: {
         //             authorizetion: `bearer ${localStorage.getItem('token')}`
         //         }

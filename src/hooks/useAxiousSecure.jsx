@@ -9,7 +9,7 @@ const useAxiosSecure = (baseUrl) => {
     const { logOutUser } = useContext(AuthContext);
 
     const axiosSecure = axios.create({
-        baseURL: `http://localhost:3000`,
+        baseURL: `https://bistro-boss-restaurant-server-ecru.vercel.app`,
     });
 
 
@@ -18,6 +18,7 @@ const useAxiosSecure = (baseUrl) => {
         axiosSecure.interceptors.request.use(
             (config) => {
                 const token = localStorage.getItem('token');
+
                 if (token) {
                     config.headers.authorizetion = `Bearer ${token}`;
                 }

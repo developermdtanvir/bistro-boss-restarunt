@@ -3,12 +3,17 @@ import { toast } from 'react-hot-toast';
 import { FaCartPlus, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/school.png';
+import useAdmin from '../../../hooks/useAdmin';
 import useCart from '../../../hooks/useCart';
 import { AuthContext } from '../../../providers/AuthProvider';
 function Navbar() {
     const { user, logOutUser } = useContext(AuthContext);
 
     console.log(user);
+
+    const [isAdmin] = useAdmin();
+
+    console.log(isAdmin, 'isAdmin')
 
     const handleLogOut = () => {
         logOutUser()
@@ -25,7 +30,7 @@ function Navbar() {
     const nav = <>
         <li className='uppercase'><Link to='/'>Home</Link></li>
         <li className='uppercase'><Link>Contact us</Link></li>
-        <li className='uppercase'><Link to='/dashboard'>Dashboard</Link></li>
+        {isAdmin ? <li className='uppercase'><Link to='/dashboard/adminhome'>Dashboard</Link></li> : <li className='uppercase'><Link to='/dashboard'>Dashboard</Link></li>}
         <li className='uppercase'><Link to='/menu'>Our Menu</Link></li>
         <li className='uppercase'><Link to='/shop/salads'>our shop</Link></li>
         <li><Link to='/dashboard/cart'><button className="btn btn-xs">

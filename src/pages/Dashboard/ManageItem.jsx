@@ -9,7 +9,7 @@ function ManageItem() {
     const [menu, isLoading, refetch] = useMenu();
 
     const handleDeleteItem = id => {
-        fetch(`http://localhost:3000/menu/${id}`, {
+        fetch(`https://bistro-boss-restaurant-server-ecru.vercel.app/menu/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

@@ -4,10 +4,12 @@ import LoginLayout from "../layout/LoginLayout";
 import Main from "../layout/Main";
 import SignUpLayout from "../layout/SignUpLayout";
 import AddItem from "../pages/Dashboard/AddItem";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import ManageItem from "../pages/Dashboard/ManageItem";
 import MyCart from "../pages/Dashboard/MyCart";
+import Payment from "../pages/Dashboard/Payment/Payment";
 import Review from "../pages/Dashboard/Review";
 import UpdateItem from "../pages/Dashboard/UpdateItem";
 import Home from "../pages/Home/Home/Home";
@@ -16,6 +18,7 @@ import Menu from "../pages/Menu/Menu";
 import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Shop from "../pages/Shop/Shop";
 import Signup from "../pages/Signup/Signup";
+import AdminRoute from "./AdminRoute";
 
 
 export const router = createBrowserRouter([
@@ -79,6 +82,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/carts'
             },
             {
+                element: <AdminRoute><AdminHome /></AdminRoute>,
+                path: '/dashboard/adminhome'
+            },
+            {
                 element: <AddItem />,
                 path: '/dashboard/additem'
             },
@@ -97,6 +104,10 @@ export const router = createBrowserRouter([
             {
                 element: <AllUsers />,
                 path: '/dashboard/alluser'
+            },
+            {
+                element: <Payment />,
+                path: '/dashboard/payment'
             },
         ]
     },

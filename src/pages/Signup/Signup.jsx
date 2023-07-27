@@ -23,7 +23,7 @@ function Signup() {
             .then(res => {
                 const { email, displayName } = res.user
                 const saveUser = { email: email, name: displayName }
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -32,7 +32,7 @@ function Signup() {
                 }).then(res => res.json())
                     .then(data => {
                         localStorage.setItem('token', data.token);
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -51,7 +51,7 @@ function Signup() {
             .then(res => {
                 const { email, displayName } = res.user
                 const saveUser = { email: email, name: displayName }
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -62,7 +62,7 @@ function Signup() {
 
                         localStorage.setItem('token', data.token);
 
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'applicatin/json'
@@ -82,7 +82,7 @@ function Signup() {
         createUserEamilPass(email, password)
             .then(res => {
                 const email = res.user.email
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -98,7 +98,7 @@ function Signup() {
                         })
                     });
                 updateUser(name).then(res => {
-                    fetch('http://localhost:3000/users', {
+                    fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/users', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

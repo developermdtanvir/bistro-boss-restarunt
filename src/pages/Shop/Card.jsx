@@ -19,7 +19,7 @@ function Card({ item }) {
 
         if (user && user.email) {
             const cartItem = { foodId: _id, name, image, price, email: user.email };
-            fetch('http://localhost:3000/cart', {
+            fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/cart', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

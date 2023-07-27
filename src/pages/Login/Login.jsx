@@ -31,7 +31,7 @@ function Login() {
                 const { email, displayName } = res.user
                 const saveUser = { email: email, name: displayName }
 
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -42,7 +42,7 @@ function Login() {
 
                         localStorage.setItem('token', data.token);
                         navigate(from, { replace: true })
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ function Login() {
                 const { email, displayName } = res.user
                 const saveUser = { email: email, name: displayName }
 
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -78,7 +78,7 @@ function Login() {
                         console.log(data);
                         localStorage.setItem('token', data.token);
                         navigate(from, { replace: true })
-                        fetch('http://localhost:3000/users', {
+                        fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ function Login() {
                 const email = res.user.email;
 
                 toast.success('Successfully Login')
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

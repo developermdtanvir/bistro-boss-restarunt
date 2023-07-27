@@ -1,4 +1,5 @@
 import { AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useCart from "../../hooks/useCart";
 
@@ -28,7 +29,7 @@ function MyCart() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/cart/${id}`, {
+                fetch(`https://bistro-boss-restaurant-server-ecru.vercel.app/cart/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'content-type': 'application/json'
@@ -60,7 +61,7 @@ function MyCart() {
             <div className="uppercase flex items-center justify-evenly">
                 <h1 className=" text-2xl">Total Cart {cart.length}</h1>
                 <p className=" text-2xl">total price {sum}</p>
-                <button className="btn btn-sm btn-warning">pay</button>
+                <Link to={'/dashboard/payment'}><button className="btn btn-sm btn-warning">pay</button></Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">

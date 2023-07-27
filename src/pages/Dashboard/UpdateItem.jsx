@@ -27,7 +27,7 @@ function UpdateItem() {
                 if (data.success) {
                     const image = data.data.display_url
                     const menuItem = { name, recipe: details, image, price, category }
-                    fetch('http://localhost:3000/menu', {
+                    fetch('https://bistro-boss-restaurant-server-ecru.vercel.app/menu', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

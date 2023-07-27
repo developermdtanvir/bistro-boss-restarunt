@@ -13,7 +13,6 @@ function App() {
     <>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
-
           <Toaster />
           <div className="container mx-auto">
             <RouterProvider router={router}></RouterProvider>
